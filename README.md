@@ -11,4 +11,4 @@ Built a semantic, content recommendation system that combines topic modeling and
 
 
 ## Basic initial setup 
-
+To start things off I just made a basic S3 bucket and configured all the settings for it. Then started off by making a SageMaker Notebook instance, this was my first time making a notebook instance in the almost five years that I've been using AWS. Everything was pretty straight forward it was almost like creating any regular instance, the only thing that caught my eye is that the notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries. I then created a new Jupyter notebook in JupyterLab and saved.
