@@ -16,3 +16,4 @@ To start things off I just made a basic S3 bucket and configured all the setting
 
 
 ## Download and prepare dataset
+I started by fetching the dataset which didn't take to long. I just imported some libraries and defined a few environment variables in my notebook environment (Fetch data set code file).
