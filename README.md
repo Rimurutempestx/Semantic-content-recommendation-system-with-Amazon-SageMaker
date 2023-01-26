@@ -10,4 +10,5 @@ Built a semantic, content recommendation system that combines topic modeling and
 
 
 
+## Basic initial setup 
 
