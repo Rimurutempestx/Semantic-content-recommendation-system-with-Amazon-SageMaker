@@ -1,0 +1,17 @@
+!pip install sagemaker==1.9.0
+import numpy as np
+import os
+import matplotlib.pyplot as plt
+import sagemaker
+import seaborn as sns
+from sklearn.datasets import fetch_20newsgroups
+import pandas as pd
+from sklearn.datasets.twenty_newsgroups import strip_newsgroup_header, strip_newsgroup_quoting, strip_newsgroup_footer
+newsgroups_train = fetch_20newsgroups(subset='train')['data']
+newsgroups_test = fetch_20newsgroups(subset = 'test')['data']
+NUM_TOPICS = 30
+NUM_NEIGHBORS = 10
+BUCKET = 'sagemaker-rjd'
+PREFIX = '20newsgroups'
+train_labels = fetch_20newsgroups(subset='train')['target']
+categories = fetch_20newsgroups(subset='train')['target_names']
