@@ -1,0 +1,17 @@
+from sagemaker import get_execution_role
+
+role = get_execution_role()
+
+bucket = BUCKET
+prefix = PREFIX
+
+train_prefix = os.path.join(prefix, 'train')
+val_prefix = os.path.join(prefix, 'val')
+output_prefix = os.path.join(prefix, 'output')
+
+s3_train_data = os.path.join('s3://', bucket, train_prefix)
+s3_val_data = os.path.join('s3://', bucket, val_prefix)
+output_path = os.path.join('s3://', bucket, output_prefix)
+print('Training set location', s3_train_data)
+print('Validation set location', s3_val_data)
+print('Trained model will be saved at', output_path)
