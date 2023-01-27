@@ -1,0 +1,2 @@
+ntm.set_hyperparameters(num_topics=NUM_TOPICS, feature_dim=vocab_size, mini_batch_size=128, 
+                        epochs=100, num_patience_epochs=5, tolerance=0.001)
