@@ -1,0 +1,29 @@
+def trained_estimator_from_hyperparams(s3_train_data, hyperparams, output_path, s3_test_data=None):
+    """
+    Create an Estimator from the given hyperparams, fit to training data, 
+    and return a deployed predictor
+    
+    """
+    # set up the estimator
+    knn = sagemaker.estimator.Estimator(get_image_uri(boto3.Session().region_name, "knn"),
+        get_execution_role(),
+        train_instance_count=1,
+        train_instance_type='ml.c4.xlarge',
+        output_path=output_path,
+        sagemaker_session=sagemaker.Session())
+    knn.set_hyperparameters(**hyperparams)
+    
+    # train a model. fit_input contains the locations of the train and test data
+    fit_input = {'train': s3_train_data}
+    knn.fit(fit_input)
+    return knn
+
+hyperparams = {
+    'feature_dim': predictions.shape[1],
+    'k': NUM_NEIGHBORS,
+    'sample_size': predictions.shape[0],
+    'predictor_type': 'classifier' ,
+    'index_metric':'COSINE'
+}
+output_path = 's3://' + bucket + '/' + prefix + '/knn/output'
+knn_estimator = trained_estimator_from_hyperparams(s3_train_data, hyperparams, output_path)
