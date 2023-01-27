@@ -1,0 +1,2 @@
+!aws s3 cp --recursive $ntm_transformer.output_path ./
+!head -c 5000 trainvectors.csv.out
