@@ -1,0 +1,18 @@
+np.savetxt('trainvectors.csv',
+           vectors.todense(),
+           delimiter=',',
+           fmt='%i')
+batch_prefix = '20newsgroups/batch'
+
+train_s3 = sess.upload_data('trainvectors.csv', 
+                            bucket=bucket, 
+                            key_prefix='{}/train'.format(batch_prefix))
+print(train_s3)
+batch_output_path = 's3://{}/{}/test'.format(bucket, batch_prefix)
+
+ntm_transformer = ntm.transformer(instance_count=1,
+                                  instance_type ='ml.m4.xlarge',
+                                  output_path=batch_output_path
+                                 )
+ntm_transformer.transform(train_s3, content_type='text/csv', split_type='Line')
+ntm_transformer.wait()
