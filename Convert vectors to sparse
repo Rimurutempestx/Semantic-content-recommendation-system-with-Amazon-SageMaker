@@ -1,0 +1,3 @@
+import scipy.sparse as sparse
+vectors = sparse.csr_matrix(vectors, dtype=np.float32)
+print(type(vectors), vectors.dtype)
