@@ -1,0 +1,3 @@
+import boto3
+from sagemaker.amazon.amazon_estimator import get_image_uri
+container = get_image_uri(boto3.Session().region_name, 'ntm')
