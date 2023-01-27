@@ -39,6 +39,7 @@ At the time of writing, by default, the Amazon SageMaker Python SDK uses FullyRe
 It was now time to deploy the topic model, A trained model by itself is simply a tar file consisting of the model weights and does nothing on its own. To make the model useful and get predictions, I needed to deploy the model. There are two ways to deploy the model in Amazon SageMaker, depending on how you want to generate inferences:
 
 Option #1 - To get one inference at a time, set up a persistent endpoint using Amazon SageMaker hosting services.
+
 Option #2 - To get inferences for an entire dataset, use Amazon SageMaker batch transform.
 This lab provides both options for you to choose the best approach for your use case.
 
