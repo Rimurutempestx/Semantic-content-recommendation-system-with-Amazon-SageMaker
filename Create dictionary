@@ -1,0 +1,2 @@
+labels = newidx 
+labeldict = dict(zip(newidx,idx))
