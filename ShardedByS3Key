@@ -1,0 +1,3 @@
+from sagemaker.session import s3_input
+s3_train = s3_input(s3_train_data, distribution='ShardedByS3Key') 
+ntm.fit({'train': s3_train, 'test': s3_val_data})
