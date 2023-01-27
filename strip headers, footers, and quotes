@@ -1,0 +1,4 @@
+for i in range(len(newsgroups_train)):
+    newsgroups_train[i] = strip_newsgroup_header(newsgroups_train[i])
+    newsgroups_train[i] = strip_newsgroup_quoting(newsgroups_train[i])
+    newsgroups_train[i] = strip_newsgroup_footer(newsgroups_train[i])
