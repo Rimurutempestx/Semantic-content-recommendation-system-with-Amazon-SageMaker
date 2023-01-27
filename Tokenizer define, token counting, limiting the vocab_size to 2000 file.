@@ -1,0 +1,14 @@
+!pip install nltk
+import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
+from nltk import word_tokenize          
+from nltk.stem import WordNetLemmatizer 
+import re
+token_pattern = re.compile(r"(?u)\b\w\w+\b")
+class LemmaTokenizer(object):
+    def __init__(self):
+        self.wnl = WordNetLemmatizer()
+    def __call__(self, doc):
+        return [self.wnl.lemmatize(t) for t in word_tokenize(doc) if len(t) >= 2 and re.match("[a-z].*",t) 
+                and re.match(token_pattern, t)]
