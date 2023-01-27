@@ -56,6 +56,8 @@ Now it was time to create and run the job, before I had created topic vectors. N
 
 ![image](https://user-images.githubusercontent.com/106786020/215220189-574df133-38c9-4500-b2a9-f3ceaba6b2cf.png)
 
+By setting the index_metric to COSINE, Amazon SageMaker automatically uses the cosine similarity for computing the nearest neighbors. The default distance is the L2 norm, which is the standard Euclidean distance. Note that, at publication, COSINE is only supported for faiss.IVFFlat index type and not the faiss.IVFPQ indexing method.
+
 
 
 
