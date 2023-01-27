@@ -50,4 +50,13 @@ Finally it was time to explore the topic model, the approach I used for explorin
 
 
 ## Train and deploy the content recommendation model
-Now it was time to create and run the job, before I had created topic vectors. Now it is time to build and deploy the content recommendation model which retains an index of the topic vectors. First, I had to create a dictionary which links the shuffled labels to the original labels in the training data (Create dictionary file). Then it was time to store the training data in the S3 bucket (Store traing data in s3 file). Now, it was time to use a function to create a k-NN estimator much like the NTM estimator I created before (k-NN estimator file).
+Now it was time to create and run the job, before I had created topic vectors. Now it is time to build and deploy the content recommendation model which retains an index of the topic vectors. First, I had to create a dictionary which links the shuffled labels to the original labels in the training data (Create dictionary file). Then it was time to store the training data in the S3 bucket (Store traing data in s3 file). Now, it was time to use a function to create a k-NN estimator much like the NTM estimator I created before (k-NN estimator file). After taking a closer look at the parameters in the helper function, I noticed the Amazon SageMaker k-NN algorithm offers a number of different distance metrics for calculating the nearest neighbors. One popular metric that is used in natural language processing is the cosine distance. Mathematically, the cosine “similarity” between two vectors A and B is given by the following equation:
+
+
+
+![image](https://user-images.githubusercontent.com/106786020/215220189-574df133-38c9-4500-b2a9-f3ceaba6b2cf.png)
+
+
+
+
+
