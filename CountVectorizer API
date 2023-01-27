@@ -1,0 +1,20 @@
+import time
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+vocab_size = 2000
+print('Tokenizing and counting, this may take a few minutes...')
+start_time = time.time()
+vectorizer = CountVectorizer(input='content', analyzer='word', stop_words='english',
+                             tokenizer=LemmaTokenizer(), max_features=vocab_size, max_df=0.95, min_df=2)
+vectors = vectorizer.fit_transform(newsgroups_train)
+vocab_list = vectorizer.get_feature_names()
+print('vocab size:', len(vocab_list))
+
+# random shuffle
+idx = np.arange(vectors.shape[0])
+newidx = np.random.permutation(idx) # this will be the labels fed into the KNN model for training
+# Need to store these permutations:
+
+vectors = vectors[newidx]
+
+print('Done. Time elapsed: {:.2f}s'.format(time.time() - start_time))
