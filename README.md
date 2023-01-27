@@ -45,6 +45,8 @@ This lab provides both options for you to choose the best approach for your use 
 
 I decided to go with option #2 because i felt like it would be a little bit quicker. With batch transform, you can run inferences on a batch of data at a time. Amazon SageMaker creates the necessary compute infrastructure and tears it down once the batch job is completed. The batch transform code creates a sagemaker.transformer.Transformer (sagemaker.transformer.Transformer file) object from the topic model. Then, it calls that object's transform method to create a transform job. When you create the sagemaker.transformer.Transformer object, you specify the number and type of instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences. Once the transform job finished, it was time to download the outputs back to my local notebook instance for inspection (outputs file).
 
+Finally it was time to explore the topic model, the approach I used for exploring the model outputs is to visualize the topic vectors generated using a T-SNE plot. A T-SNE, or t-Distributed Stochastic Neighbor Embedding, is a non-linear technique for dimensionality reduction which aims to ensure that the distance between nearest neighbors in the original high dimensional space is preserved in the resulting lower dimensional space. By setting the number of dimensions to 2, it can be used as an visualization tool to visualize the topic vectors in 2D space (TSNE-plot file). 
+
 
 
 
