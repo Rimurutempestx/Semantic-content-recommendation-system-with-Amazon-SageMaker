@@ -1,0 +1,25 @@
+def split_convert_upload(sparray, bucket, prefix, fname_template='data_part{}.pbr', n_parts=2):
+    import io
+    import boto3
+    import sagemaker.amazon.common as smac
+    
+    chunk_size = sparray.shape[0]// n_parts
+    for i in range(n_parts):
+
+        # Calculate start and end indices
+        start = i*chunk_size
+        end = (i+1)*chunk_size
+        if i+1 == n_parts:
+            end = sparray.shape[0]
+        
+        # Convert to record protobuf
+        buf = io.BytesIO()
+        smac.write_spmatrix_to_sparse_tensor(array=sparray[start:end], file=buf, labels=None)
+        buf.seek(0)
+        
+        # Upload to s3 location specified by bucket and prefix
+        fname = os.path.join(prefix, fname_template.format(i))
+        boto3.resource('s3').Bucket(bucket).Object(fname).upload_fileobj(buf)
+        print('Uploaded data to s3://{}'.format(os.path.join(bucket, fname)))
+split_convert_upload(train_vectors, bucket=bucket, prefix=train_prefix, fname_template='train_part{}.pbr', n_parts=8)
+split_convert_upload(val_vectors, bucket=bucket, prefix=val_prefix, fname_template='val_part{}.pbr', n_parts=1)
