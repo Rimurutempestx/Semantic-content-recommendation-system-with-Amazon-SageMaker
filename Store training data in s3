@@ -1,0 +1,18 @@
+import io
+import sagemaker.amazon.common as smac
+
+
+print('train_features shape = ', predictions.shape)
+print('train_labels shape = ', labels.shape)
+buf = io.BytesIO()
+smac.write_numpy_to_dense_tensor(buf, predictions, labels)
+buf.seek(0)
+
+bucket = BUCKET
+prefix = PREFIX
+key = 'knn/train'
+fname = os.path.join(prefix, key)
+print(fname)
+boto3.resource('s3').Bucket(bucket).Object(fname).upload_fileobj(buf)
+s3_train_data = 's3://{}/{}/{}'.format(bucket, prefix, key)
+print('uploaded training data location: {}'.format(s3_train_data))
