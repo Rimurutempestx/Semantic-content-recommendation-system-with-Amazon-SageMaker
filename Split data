@@ -1,0 +1,10 @@
+# Convert data into training and validation data
+n_train = int(0.8 * vectors.shape[0])
+
+# split train and test
+train_vectors = vectors[:n_train, :]
+val_vectors = vectors[n_train:, :]
+
+# further split test set into validation set (val_vectors) and test  set (test_vectors)
+
+print(train_vectors.shape,val_vectors.shape)
