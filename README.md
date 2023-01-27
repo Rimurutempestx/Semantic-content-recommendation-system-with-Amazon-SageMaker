@@ -16,4 +16,4 @@ To start things off I just made a basic S3 bucket and configured all the setting
 
 
 ## Download and prepare dataset
-I started by fetching the dataset which didn't take to long. I just imported some libraries and defined a few environment variables in my notebook environment (Fetch data set code file).
+I started by fetching the dataset which didn't take to long. I just imported some libraries and defined a few environment variables in my notebook environment (Fetch data set code file). Then I started by setting up the reproccessing data code, to process raw text data into machine readable numeric values. First, I used the APIs provided by scikit-learn to strip any headers, footers and quotes from the dataset. Then I defined the code in my Jupyter notebook (strip headers, footers, and quotes file).
