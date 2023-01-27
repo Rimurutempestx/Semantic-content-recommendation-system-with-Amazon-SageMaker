@@ -43,6 +43,8 @@ Option #2 - To get inferences for an entire dataset, use Amazon SageMaker batch 
 This lab provides both options for you to choose the best approach for your use case.
 
 
-I decided to go with option #2 because i felt like it would be a little bit quicker. With batch transform, you can run inferences on a batch of data at a time. Amazon SageMaker creates the necessary compute infrastructure and tears it down once the batch job is completed. The batch transform code creates a sagemaker.transformer.Transformer (sagemaker.transformer.Transformer file) object from the topic model. Then, it calls that object's transform method to create a transform job. When you create the sagemaker.transformer.Transformer object, you specify the number and type of instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences.  
+I decided to go with option #2 because i felt like it would be a little bit quicker. With batch transform, you can run inferences on a batch of data at a time. Amazon SageMaker creates the necessary compute infrastructure and tears it down once the batch job is completed. The batch transform code creates a sagemaker.transformer.Transformer (sagemaker.transformer.Transformer file) object from the topic model. Then, it calls that object's transform method to create a transform job. When you create the sagemaker.transformer.Transformer object, you specify the number and type of instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences. Once the transform job finished, it was time to download the outputs back to my local notebook instance for inspection (outputs file).
+
+
 
 
