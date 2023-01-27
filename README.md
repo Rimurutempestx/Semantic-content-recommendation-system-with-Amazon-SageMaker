@@ -50,4 +50,4 @@ Finally it was time to explore the topic model, the approach I used for explorin
 
 
 ## Train and deploy the content recommendation model
-Now it was time to create and run the job, before I had created topic vectors. Now it is time to build and deploy the content recommendation model which retains an index of the topic vectors. First, I had to create a dictionary which links the shuffled labels to the original labels in the training data (Create dictionary file). Then it was time to store the training data in the S3 bucket (Store traing data in s3 file).
+Now it was time to create and run the job, before I had created topic vectors. Now it is time to build and deploy the content recommendation model which retains an index of the topic vectors. First, I had to create a dictionary which links the shuffled labels to the original labels in the training data (Create dictionary file). Then it was time to store the training data in the S3 bucket (Store traing data in s3 file). Now, it was time to use a function to create a k-NN estimator much like the NTM estimator I created before (k-NN estimator file).
