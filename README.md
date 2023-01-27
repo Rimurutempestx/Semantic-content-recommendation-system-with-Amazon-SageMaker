@@ -34,3 +34,15 @@ I started by creating and running the training job. The built-in Amazon SageMake
 - ShardedByS3Key: Data files are sharded to different workers, that is, each worker receives a different portion of the full data set.
 
 At the time of writing, by default, the Amazon SageMaker Python SDK uses FullyReplicated mode for all data channels. This mode is desirable for validation (test) channel but not as efficient for the training channel, when you use multiple workers. In this case, I want to have each worker go through a different portion of the full dataset to provide different gradients within epochs. I specify distribution to be ShardedByS3Key (ShardedByS3Key file). 
+
+
+It was now time to deploy the topic model, A trained model by itself is simply a tar file consisting of the model weights and does nothing on its own. To make the model useful and get predictions, I needed to deploy the model. There are two ways to deploy the model in Amazon SageMaker, depending on how you want to generate inferences:
+
+Option #1 - To get one inference at a time, set up a persistent endpoint using Amazon SageMaker hosting services.
+Option #2 - To get inferences for an entire dataset, use Amazon SageMaker batch transform.
+This lab provides both options for you to choose the best approach for your use case.
+
+
+I decided to go with option #2 because i felt like it would be a little bit quicker. With batch transform, you can run inferences on a batch of data at a time. Amazon SageMaker creates the necessary compute infrastructure and tears it down once the batch job is completed. The batch transform code creates a sagemaker.transformer.Transformer object from the topic model. Then, it calls that object's transform method to create a transform job. When you create the sagemaker.transformer.Transformer object, you specify the number and type of instances to use to perform the batch transform job, and the location in Amazon S3 where you want to store the inferences.  
+
+
