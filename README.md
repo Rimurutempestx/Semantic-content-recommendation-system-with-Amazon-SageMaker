@@ -59,7 +59,7 @@ Now it was time to create and run the job, before I had created topic vectors. N
 
 By setting the index_metric to COSINE, Amazon SageMaker automatically uses the cosine similarity for computing the nearest neighbors. The default distance is the L2 norm, which is the standard Euclidean distance. Note that, at publication, COSINE is only supported for faiss.IVFFlat index type and not the faiss.IVFPQ indexing method.
 
-
+It was now time to deploy the content recommendation model, As I did with the NTM model, I da to define a helper function for the k-NN model to launch the endpoint. In the helper function, the accept token applications/jsonlines; verbose=true tells the k-NN model to return all the cosine distances instead of just the closest neighbor. To build a recommendation engine, I need to get the top-k suggestions by the model, for which I need to set the verbose parameter to true, instead of the default, false (function for the k-NN model to launch the endpoint file).
 
 
 
