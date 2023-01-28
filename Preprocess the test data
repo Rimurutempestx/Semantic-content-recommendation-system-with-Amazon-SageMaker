@@ -1,0 +1,22 @@
+def preprocess_input(text):
+    text = strip_newsgroup_header(text)
+    text = strip_newsgroup_quoting(text)
+    text = strip_newsgroup_footer(text)
+    return text    
+    
+test_data_prep = []
+for i in range(len(newsgroups_test)):
+    test_data_prep.append(preprocess_input(newsgroups_test[i]))
+test_vectors = vectorizer.fit_transform(test_data_prep)
+
+test_vectors = np.array(test_vectors.todense())
+test_topics = []
+for vec in test_vectors:
+    test_result = ntm_predictor.predict(vec)
+    test_topics.append(test_result['predictions'][0]['topic_weights'])
+
+topic_predictions = []
+for topic in test_topics:
+    result = knn_predictor.predict(topic)
+    cur_predictions = np.array([int(result['labels'][i]) for i in range(len(result['labels']))])
+    topic_predictions.append(cur_predictions[::-1][:10])   
