@@ -1,0 +1,15 @@
+def predictor_from_estimator(knn_estimator, estimator_name, instance_type, endpoint_name=None): 
+    knn_predictor = knn_estimator.deploy(initial_instance_count=1, instance_type=instance_type,
+                                        endpoint_name=endpoint_name,
+                                        accept="application/jsonlines; verbose=true")
+    knn_predictor.content_type = 'text/csv'
+    knn_predictor.serializer = csv_serializer
+    knn_predictor.deserializer = json_deserializer
+    return knn_predictor
+import time
+
+instance_type = 'ml.m4.xlarge'
+model_name = 'knn_%s'% instance_type
+endpoint_name = 'knn-ml-m4-xlarge-%s'% (str(time.time()).replace('.','-'))
+print('setting up the endpoint..')
+knn_predictor = predictor_from_estimator(knn_estimator, model_name, instance_type, endpoint_name=endpoint_name)
