@@ -61,5 +61,7 @@ By setting the index_metric to COSINE, Amazon SageMaker automatically uses the c
 
 It was now time to deploy the content recommendation model, As I did with the NTM model, I da to define a helper function for the k-NN model to launch the endpoint. In the helper function, the accept token applications/jsonlines; verbose=true tells the k-NN model to return all the cosine distances instead of just the closest neighbor. To build a recommendation engine, I need to get the top-k suggestions by the model, for which I need to set the verbose parameter to true, instead of the default, false (function for the k-NN model to launch the endpoint file). Next I had to preprocess the test data so that I can run inferences (Preprocess the test data file).
 
+Now that it's deployed I can explore the reccomendation model. I can plot the topic distributions of the test topics, compared to the closest k topics recommended by the k-NN model (Plot topic distributions file).
 
 
+After running diffrent codes to plot the topic distribution everything was running and working together pretty smoothly. This project was more on the easy side, I ran into maybe one or two hiccups but i fixed those problems pretty quickly. Overall this was actually really fun considering I got to use and play around with a lot of services that I haven't used before.
