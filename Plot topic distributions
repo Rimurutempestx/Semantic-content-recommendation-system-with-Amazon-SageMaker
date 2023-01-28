@@ -1,0 +1,13 @@
+# set your own k.
+def plot_topic_distribution(topic_num, k = 5):
+    
+    closest_topics = [predictions[labeldict[x]] for x in topic_predictions[topic_num][:k]]
+    closest_topics.append(np.array(test_topics[topic_num]))
+    closest_topics = np.array(closest_topics)
+    df = pd.DataFrame(closest_topics.T)
+    df.rename(columns ={k:"Test Document Distribution"}, inplace=True)
+    fs = 12
+    df.plot(kind='bar', figsize=(16,4), fontsize=fs)
+    plt.ylabel('Topic assignment', fontsize=fs+2)
+    plt.xlabel('Topic ID', fontsize=fs+2)
+    plt.show()
